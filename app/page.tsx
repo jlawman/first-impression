@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import CameraCapture from '@/components/CameraCapture'
+import ResultsDisplay from '@/components/ResultsDisplay'
 import { analyzeImage, type AnalysisResult } from '@/app/actions/analyze-image'
 
 export default function Home() {
@@ -65,24 +66,13 @@ export default function Home() {
               </div>
             </div>
           ) : analysisResult ? (
-            <div className="mx-auto max-w-4xl">
-              <div className="rounded-xl bg-white p-8 shadow-lg">
-                <h2 className="text-2xl font-bold text-gray-900">Analysis Complete!</h2>
-                <p className="mt-2 text-gray-600">
-                  Overall Score: {analysisResult.overallScore}/100
-                </p>
-                <p className="mt-4 text-gray-700">{analysisResult.summary}</p>
-                <button
-                  onClick={() => {
-                    setCapturedImage(null)
-                    setAnalysisResult(null)
-                  }}
-                  className="mt-6 rounded-lg bg-blue-600 px-6 py-3 text-white transition-colors hover:bg-blue-700"
-                >
-                  Take Another Photo
-                </button>
-              </div>
-            </div>
+            <ResultsDisplay
+              results={analysisResult}
+              onRetake={() => {
+                setCapturedImage(null)
+                setAnalysisResult(null)
+              }}
+            />
           ) : null}
         </div>
       </div>
