@@ -108,7 +108,8 @@ export default function Home() {
               </div>
               <h3 className="mt-4 text-xl font-semibold text-gray-900">Stagnant Performance</h3>
               <p className="mt-2 text-gray-600">
-                Without objective insights, it&apos;s impossible to improve your professional presence
+                Without objective insights, it&apos;s impossible to improve your professional
+                presence
               </p>
             </div>
           </div>

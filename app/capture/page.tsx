@@ -4,6 +4,8 @@ import { useState } from 'react'
 import CameraCapture from '@/components/CameraCapture'
 import ResultsDisplay from '@/components/ResultsDisplay'
 import { analyzeImage, type AnalysisResult } from '@/app/actions/analyze-image'
+import { saveAnalysis } from '@/app/actions/history'
+import { getUserIdentifier } from '@/lib/user-identification'
 
 export default function CapturePage() {
   const [capturedImage, setCapturedImage] = useState<string | null>(null)
@@ -19,6 +21,17 @@ export default function CapturePage() {
     try {
       const result = await analyzeImage(imageData)
       setAnalysisResult(result)
+
+      // Save to database if DATABASE_URL is configured
+      if (process.env.NEXT_PUBLIC_ENABLE_HISTORY === 'true') {
+        try {
+          const userId = getUserIdentifier()
+          await saveAnalysis(userId, imageData, result)
+        } catch (saveError) {
+          console.error('Failed to save analysis:', saveError)
+          // Don't show error to user - saving is optional
+        }
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to analyze image')
     } finally {
