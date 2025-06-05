@@ -5,6 +5,7 @@ AI-powered tool to help sales professionals perfect their first impressions thro
 ## Overview
 
 First Impression uses advanced AI vision technology to analyze your professional presence and provide actionable feedback on:
+
 - Facial expressions and confidence
 - Professional appearance
 - Body language and posture

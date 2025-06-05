@@ -1,0 +1,9 @@
+.next
+node_modules
+out
+public
+coverage
+.vercel
+next.config.js
+postcss.config.js
+tailwind.config.js
