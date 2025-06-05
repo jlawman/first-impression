@@ -28,7 +28,19 @@ First Impression uses advanced AI vision technology to analyze your professional
 
 ## Getting Started
 
-(Instructions coming soon)
+First, install dependencies:
+
+```bash
+bun install
+```
+
+Then, run the development server:
+
+```bash
+bun run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## License
 
